@@ -83,6 +83,7 @@ class AVWDCRNN(nn.Module):
     def forward(self, x, init_state, node_embeddings, learned_tilde):
         #shape of x: (B, T, N, D)
         #shape of init_state: (num_layers, B, N, hidden_dim)
+        # print(x.shape, self.node_num, self.input_dim)
         assert x.shape[2] == self.node_num and x.shape[3] == self.input_dim
         seq_length = x.shape[1]
         current_inputs = x

@@ -60,7 +60,7 @@ def split_data_by_days(data, val_days, test_days, interval=60):
     :param interval: interval (15, 30, 60) minutes
     :return:
     '''
-    T = int((24*60)/interval)
+    T = int((24*1)/interval)
     test_data = data[-T*test_days:]
     val_data = data[-T*(test_days + val_days): -T*test_days]
     train_data = data[:-T*(test_days + val_days)]
@@ -123,7 +123,9 @@ if __name__ == '__main__':
     elif DATASET == 'SIGIR_solar':
         NODE_NUM = 137
     elif DATASET == 'SIGIR_electric':
-        NODE_NUM = 321
+        NODE_NUM = 321    
+    elif DATASET == 'BAST':
+        NODE_NUM = 1680
     parser = argparse.ArgumentParser(description='PyTorch dataloader')
     parser.add_argument('--dataset', default=DATASET, type=str)
     parser.add_argument('--num_nodes', default=NODE_NUM, type=int)
@@ -133,4 +135,4 @@ if __name__ == '__main__':
     parser.add_argument('--horizon', default=12, type=int)
     parser.add_argument('--batch_size', default=64, type=int)
     args = parser.parse_args()
-    train_dataloader, val_dataloader, test_dataloader, scaler = get_dataloader(args, normalizer = 'std', tod=False, dow=False, weather=False, single=True)
+    train_dataloader, val_dataloader, test_dataloader, scaler = get_dataloader(args, normalizer = 'cmax', tod=False, dow=False, weather=False, single=True)

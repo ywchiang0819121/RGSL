@@ -23,13 +23,14 @@ from lib.utils import get_adjacency_matrix, scaled_Laplacian, cheb_polynomial
 #*************************************************************************#
 Mode = 'train'
 DEBUG = 'False'
-DATASET = 'PEMSD8'      #PEMSD4 or PEMSD8
+DATASET = 'BAST'      #PEMSD4 or PEMSD8
 DEVICE = 'cuda:0'
 MODEL = 'RGSL'
 
 #get configuration
-config_file = './{}_{}.conf'.format(DATASET, MODEL)
-#print('Read configuration file: %s' % (config_file))
+# config_file = './{}_{}.conf'.format(DATASET, MODEL)
+config_file='E:/MS/2021/RGSL/model/BAST_RGSL.conf'
+print('Read configuration file: %s' % (config_file))
 config = configparser.ConfigParser()
 config.read(config_file)
 
@@ -52,6 +53,7 @@ args.add_argument('--debug', default=DEBUG, type=eval)
 args.add_argument('--model', default=MODEL, type=str)
 args.add_argument('--cuda', default=True, type=bool)
 #data
+# print(config.sections())
 args.add_argument('--val_ratio', default=config['data']['val_ratio'], type=float)
 args.add_argument('--test_ratio', default=config['data']['test_ratio'], type=float)
 args.add_argument('--lag', default=config['data']['lag'], type=int)

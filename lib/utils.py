@@ -29,9 +29,9 @@ def get_adjacency_matrix(distance_df_filename, num_of_vertices, id_filename=None
     ----------
     A: np.ndarray, adjacency matrix
     '''
-    if 'npy' in distance_df_filename:
+    if 'npz' in distance_df_filename:
 
-        adj_mx = np.load(distance_df_filename)
+        adj_mx = np.load(distance_df_filename)['x']
 
         return adj_mx, None
 

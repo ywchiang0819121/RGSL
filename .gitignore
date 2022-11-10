@@ -1,0 +1,4 @@
+*.npz
+*.zip
+*/__pycache__/*
+
