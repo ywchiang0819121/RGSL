@@ -138,7 +138,7 @@ class Trainer(object):
             else:
                 val_dataloader = self.val_loader
             val_epoch_loss = self.val_epoch(self.model, epoch, val_dataloader)
-            self.logger.info("##################EMA####################")
+            self.logger.info("##################EMA_VAL####################")
             val_ema_epoch_loss = self.val_epoch(self.ema_model.module, epoch, val_dataloader)
 
             #print('LR:', self.optimizer.param_groups[0]['lr'])
@@ -180,7 +180,7 @@ class Trainer(object):
         self.model.load_state_dict(best_model)
         #self.val_epoch(self.args.epochs, self.test_loader)
         self.test(self.model, self.args, self.test_loader, self.scaler, self.logger)
-        self.logger.info("##################EMA####################")
+        self.logger.info("##################EMA_TEST####################")
         self.test(self.ema_model.module, self.args, self.test_loader, self.scaler, self.logger)
 
     def save_checkpoint(self):
