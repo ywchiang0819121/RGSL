@@ -10,7 +10,7 @@ def load_st_dataset(dataset):
         data_path = os.path.join('../data/PeMSD8/pems08.npz')
         data = np.load(data_path)['data'][:, :, 0]  #onley the first dimension, traffic flow data
     elif dataset == 'BAST':
-        data_path = os.path.join('E:/MS/2021/RGSL/data/BAST/2021_2way.npz')
+        data_path = os.path.join('E:/MS/2021/RGSL/data/BAST/2021.npz')
         data = np.load(data_path)['x']
     else:
         raise ValueError
