@@ -32,6 +32,7 @@ def get_adjacency_matrix(distance_df_filename, num_of_vertices, id_filename=None
     if 'npz' in distance_df_filename:
 
         adj_mx = np.load(distance_df_filename)['x']
+        adj_mx = re_max_min_normalization(adj_mx, np.max(adj_mx), np.min(adj_mx))
 
         return adj_mx, None
 
